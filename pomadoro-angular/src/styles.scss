@@ -3,6 +3,9 @@
 @import "./assets/typography";
 @import "./assets/variables";
 @import "./assets/reset";
+
+@import '@angular/cdk/overlay-prebuilt.css';
+
 @import "./assets/common";
 
 body {

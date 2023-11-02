@@ -2,8 +2,7 @@
   Dayly tasks
 </h1>
 
-<pom-button-icon [name]="addIcon" class="tasks__add-button"/>
-
+<pom-button-icon class="tasks__add-button" [name]="addIcon" (click)="addTaskHandler()"/>
 
 <div class="tasks__dayly-list">
   <pom-task *ngFor="let task of tasks" [task]="task"/>

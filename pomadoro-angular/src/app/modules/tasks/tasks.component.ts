@@ -1,5 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { EditTaskModalComponent } from 'src/app/base/components/edit-task-modal/edit-task-modal.component';
 import { IconName } from 'src/app/base/components/icon/icon.component';
+import { ModalService } from 'src/app/base/modal/modal.service';
 import { ITask } from 'src/app/models/task.interface';
 
 @Component({
@@ -54,4 +56,20 @@ export class TasksComponent {
       timer: 3,
     },
   ];
+
+  constructor(private modal: ModalService) {
+
+  }
+
+  addTaskHandler() {
+    
+    console.log('opening')
+    const dialogRef = this.modal.open(EditTaskModalComponent);
+
+
+    // setTimeout(() => {
+    //   dialogRef.close();
+    // }, 2000);
+
+  }
 }
