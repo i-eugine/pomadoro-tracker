@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+/* base styles */
+@import "./assets/typography";
+@import "./assets/variables";
+@import "./assets/reset";
+@import "./assets/common";
+
+body {
+  background-color: $Madison;
+}

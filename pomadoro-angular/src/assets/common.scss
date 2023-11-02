@@ -1,0 +1,14 @@
+@import "typography";
+
+.page-heading {
+  @include heading1;
+
+  text-align: center;
+  color: white;
+}
+
+.actions-section {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
