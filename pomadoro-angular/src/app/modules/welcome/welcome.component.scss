@@ -1,0 +1,24 @@
+pom-welcome {
+  display: block;
+  margin-top: 105px;
+  width: 1024px;
+  margin: 105px auto 0;
+}
+
+.welcome__image {
+  height: 160px;
+  width: 170px;
+  margin: 0 auto 20px;
+}
+
+.welcome__actions {
+  margin-top: 20px;
+}
+
+.welcome__button {
+  width: 125px;
+
+  &:first-child {
+    margin-right: 20px;
+  }
+}
