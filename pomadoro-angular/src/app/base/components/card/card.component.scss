@@ -1,0 +1,17 @@
+@import "typography";
+
+pom-card {
+  display: block;
+}
+
+.card__image {
+  height: 160px;
+  width: 170px;
+  margin: 0 auto 20px;
+}
+
+.card__text {
+  @include message;
+  
+  color: var(--Nepal);
+}

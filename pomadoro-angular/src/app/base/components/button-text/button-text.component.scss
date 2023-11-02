@@ -1,0 +1,16 @@
+@import 'typography';
+@import 'mixins';
+
+pom-button-text {
+  @include transition('color');
+  @include heading3;
+
+  color: var(--Nepal);
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--Spray);
+  }
+}

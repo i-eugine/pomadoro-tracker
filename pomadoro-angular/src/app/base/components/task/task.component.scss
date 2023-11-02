@@ -1,0 +1,163 @@
+@import "variables";
+@import "mixins";
+
+.task_urgent {
+  --priority-color: #{$prior-urgent};
+  --priority-color-active: #{$prior-urgent-active};
+}
+.task_hight {
+  --priority-color: #{$prior-hight};
+  --priority-color-active: #{$prior-hight-active};
+}
+.task_middle {
+  --priority-color: #{$prior-middle};
+  --priority-color-active: #{$prior-middle-active};
+}
+.task_low {
+  --priority-color: #{$prior-low};
+  --priority-color-active: #{$prior-low-active};
+}
+
+pom-task {
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  margin-bottom: 10px;
+  height: 92px;
+  text-align: left;
+  background-color: #fff;
+  box-shadow: 3px 3px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.task-strip {
+  width: 10px;
+  height: 100%;
+
+  background-color: var(--category-color);
+}
+
+.task-date {
+  padding: 0 25px;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+
+  color: $Dark-Gray;
+}
+
+.task-text {
+  margin-left: 21px;
+}
+
+.task-caption {
+  padding-bottom: 10px;
+
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 19px;
+
+  color: var(--priority-color);
+}
+.task-note {
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+
+  color: $Dark-Gray;
+}
+
+// TODO: refactor
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+  height: 100%;
+}
+.task__edit-btn {
+  margin-right: 24px;
+  font-size: 24px;
+
+  color: $Silver;
+  &:hover,
+  &:active {
+    color: $Nepal;
+  }
+}
+.task__timer {
+  @include transition(background-color);
+  
+  position: relative;
+  height: 100%;
+  width: 87px;
+  cursor: pointer;
+  background-color: var(--priority-color);
+
+  &:hover {
+    background-color: var(--priority-color-active);
+
+    .task__timer-count,
+    .task__icon-tomato {
+      opacity: 0;
+    }
+    
+    .task__icon-timer {
+      opacity: 1;
+    }
+  }
+}
+
+.task__timer-item {
+  @include transition(opacity);
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 44px;
+  color: white;
+}
+
+.task__timer-count {
+  font-size: 28px;
+  font-family: "PT Sans", sans-serif;
+  color: white;
+}
+
+.task__icon-timer {
+  opacity: 0;
+}
+
+.task_hobby {
+  --category-color: #{$categor-hobby};
+}
+.task_sport {
+  --category-color: #{$categor-sport};
+}
+.task_work {
+  --category-color: #{$categor-work};
+}
+.task_education {
+  --category-color: #{$categor-education};
+}
+.task_other {
+  --category-color: #{$categor-other};
+}
+
+// .work-task-list {
+//   @include task-list-color("work");
+// }
+// .education-task-list {
+//   @include task-list-color("education");
+// }
+// .hobby-task-list {
+//   @include task-list-color("hobby");
+// }
+// .sport-task-list{
+//   @include task-list-color("sport");
+// }
+// .other-task-list{
+//   @include task-list-color("other");
+// }

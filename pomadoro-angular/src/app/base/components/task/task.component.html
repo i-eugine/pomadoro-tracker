@@ -1,0 +1,16 @@
+<div class="task-strip"></div>
+<div class="task-date">{{_task.date}}</div>
+<div class="task-text">
+  <h3 class="task-caption">{{_task.caption}}</h3>
+  <h6 class="task-note">{{_task.note}}</h6>
+</div>
+<div class="actions">
+  <div class="edit">
+    <pom-button-icon [name]='editIcon' class="task__edit-btn" />
+  </div>
+  <div class="task__timer">
+    <pom-icon [name]="tomatoIcon" class='task__timer-item task__icon-tomato' />
+    <pom-icon [name]="timerIcon" class='task__timer-item task__icon-timer' />
+    <span class="task__timer-item task__timer-count">{{_task.timer}}</span>
+  </div>
+</div>

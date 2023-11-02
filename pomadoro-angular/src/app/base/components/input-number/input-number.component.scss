@@ -1,0 +1,30 @@
+pom-input-number {
+  display: flex;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--Nepal);
+  color: var(--Nepal);
+
+  &:hover {
+    border-color: var(--Spray);
+
+    .input-number__value {
+      color: white;
+    }
+  }
+}
+
+.input-number__value {
+  flex-grow: 1;
+  display: inline-block;
+  padding: 0 10px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+.input-number__action {
+  &:hover {
+    color: var(--Spray);
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,12 @@
+@import "mixins";
+
+.link-icon {
+  @include transition(color);
+
+  color: var(--Spray);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--Nepal);
+  }
+}

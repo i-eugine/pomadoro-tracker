@@ -1,0 +1,9 @@
+<a class="header__logo">
+  <img src="assets/images/Logo.svg" alt="" width="100%" height="100%" />
+</a>
+
+<ul class="header__nav-list">
+    <li *ngFor="let item of navigationList">
+      <pom-link-icon [iconName]="item.iconName" [to]="item.to" [title]="item.title" />
+    </li>
+</ul>
