@@ -1,1 +1,10 @@
-<p>tasks works!</p>
+<h1 class="page-heading">
+  Dayly tasks
+</h1>
+
+<pom-button-icon [name]="addIcon" class="tasks__add-button"/>
+
+
+<div class="tasks__dayly-list">
+  <pom-task *ngFor="let task of tasks" [task]="task"/>
+</div>
