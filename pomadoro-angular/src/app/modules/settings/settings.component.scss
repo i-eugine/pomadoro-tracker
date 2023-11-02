@@ -1,0 +1,94 @@
+@import "typography";
+
+
+.settings {
+  margin-top: 60px;
+}
+
+.settings__header {
+  @include heading1;
+
+  text-align: center;
+  color: white;
+}
+
+.settings__sub-caption {
+  @include subtitle;
+
+  color: var(--Nepal);
+  margin-top: 20px;
+}
+
+.settings__fields-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: var(--mobile);
+  margin: 60px auto;
+  gap: 45px;
+}
+
+.settings__fields-block {
+  width: 325px;
+  text-align: left;
+}
+
+.settings__label-with-input {
+  display: flex;
+  align-items: center;
+}
+
+.settings__label {
+  @include paragraph;
+
+  flex-grow: 1;
+  color: white;
+  position: relative;
+
+  &:before {
+    display: block;
+    position: absolute;
+    float: left;
+    left: -32px;
+    top: -3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    content: "";
+    background-color: var(--settings-block-color);
+  }
+}
+
+.settings__fields-block_work-time {
+  --settings-block-color: var(--categor-work);
+}
+.settings__fields-block_work-iteration {
+  --settings-block-color: var(--Mountain-Meadow);
+}
+.settings__fields-block_short-break {
+  --settings-block-color: var(--categor-education);
+}
+.settings__fields-block_long-break {
+  --settings-block-color: var(--categor-hobby);
+}
+
+.settings__note {
+  @include paragraph2;
+
+  margin: 15px 0;
+  color: var(--Nepal);
+}
+
+.settings__note-units {
+  color: white;
+}
+
+.settings__button {
+  width: 140px;
+
+  &:first-child {
+    margin-right: 20px;
+  }
+}
+
