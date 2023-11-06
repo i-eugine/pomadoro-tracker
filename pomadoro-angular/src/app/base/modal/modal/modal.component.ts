@@ -1,6 +1,6 @@
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { Component, ComponentRef, EmbeddedViewRef, ViewChild, ViewEncapsulation } from '@angular/core';
-import { ModalOverleyRef } from './modal-overlay-ref';
+import { ModalRef } from '../modal-ref';
 
 @Component({
   selector: 'pom-modal',
@@ -13,7 +13,7 @@ export class ModalComponent extends BasePortalOutlet {
 
   @ViewChild(CdkPortalOutlet, { static: true }) portalOutlet: CdkPortalOutlet | null = null
 
-  constructor(private componentRef: ModalOverleyRef) {
+  constructor(private componentRef: ModalRef) {
     super();
   }
 

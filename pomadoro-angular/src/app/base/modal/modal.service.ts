@@ -1,61 +1,95 @@
 import { Injectable, InjectionToken, Injector, Type } from '@angular/core';
-import { Overlay, OverlayConfig } from '@angular/cdk/overlay'
+import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal, BasePortalOutlet } from '@angular/cdk/portal';
 import { ModalComponent } from './modal/modal.component';
-import { ModalOverleyRef } from './modal/modal-overlay-ref';
+import { ModalRef as ModalRef } from './modal-ref';
+import { take, takeUntil } from 'rxjs';
 
 type ModalData = Record<string, unknown>;
 
-export const MODAL_DATA = new InjectionToken<ModalData>('ModalData')
+export const MODAL_DATA = new InjectionToken<ModalData>('ModalData');
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ModalService {
-
-  constructor(private overlay: Overlay) { }
+  constructor(private overlay: Overlay) {}
 
   open<C, R>(component: Type<C>, data?: ModalData) {
     const overlayRef = this.createOverlay();
-    const componentRef = new ModalOverleyRef(overlayRef);
+    const modalRef = this.createModalRef(overlayRef);
 
-    const containerPortal = new ComponentPortal(ModalComponent, null, this.getContainerInjector(componentRef));
+    const containerPortal = new ComponentPortal(
+      ModalComponent,
+      null,
+      this.getContainerInjector(modalRef)
+    );
     const containerInstance = overlayRef.attach(containerPortal).instance;
 
-    const portal = new ComponentPortal(component, null, this.getComponentInjector(componentRef, data));
+    const portal = new ComponentPortal(
+      component,
+      null,
+      this.getComponentInjector(modalRef, data)
+    );
     containerInstance.attachComponentPortal(portal);
 
-    const dialogRef = new ModalOverleyRef(overlayRef);
-    overlayRef.backdropClick().subscribe(_ => dialogRef.close());
-
-    return dialogRef;
+    return modalRef;
   }
 
-  private  getComponentInjector(componentRef: ModalOverleyRef, data?: ModalData) {
-    return Injector.create({providers: [
-      { provide: ModalOverleyRef, useValue: componentRef },
-      { provide: MODAL_DATA, useValue: data }
-    ]})
+  private createModalRef<R>(overlayRef: OverlayRef): ModalRef<R> {
+    const modalRef = new ModalRef<R>();
+    const detached$ = overlayRef.detachments();
+
+    modalRef
+      .beforeClose()
+      .pipe(take(1), takeUntil(detached$))
+      .subscribe(() => overlayRef.detachBackdrop());
+
+    modalRef
+      .afterClosed()
+      .pipe(take(1), takeUntil(detached$))
+      .subscribe(() => overlayRef.dispose());
+
+    overlayRef
+      .backdropClick()
+      .pipe(take(1), takeUntil(detached$))
+      .subscribe(() => modalRef.close());
+
+    return modalRef;
   }
 
-  private  getContainerInjector(componentRef: ModalOverleyRef) {
-    return Injector.create({providers: [{ provide: ModalOverleyRef, useValue: componentRef }]})
+  private getComponentInjector<R>(componentRef: ModalRef<R>, data?: ModalData) {
+    return Injector.create({
+      providers: [
+        { provide: ModalRef, useValue: componentRef },
+        { provide: MODAL_DATA, useValue: data },
+      ],
+    });
+  }
+
+  private getContainerInjector(componentRef: ModalRef) {
+    return Injector.create({
+      providers: [{ provide: ModalRef, useValue: componentRef }],
+    });
   }
 
   private createOverlay() {
-    // Returns an OverlayConfig
-    const overlayConfig = this.getOverlayConfig(); 
-
-    // Returns an OverlayRef
+    const overlayConfig = this.getOverlayConfig();
     return this.overlay.create(overlayConfig);
   }
 
   private getOverlayConfig(): OverlayConfig {
-    const positionStrategy = this.overlay.position().global().centerHorizontally().centerVertically();
+    const positionStrategy = this.overlay
+      .position()
+      .global()
+      .centerHorizontally()
+      .centerVertically();
     const scrollStrategy = this.overlay.scrollStrategies.block();
 
-    const overlayConfig = new OverlayConfig({positionStrategy, scrollStrategy, hasBackdrop: true, });
-
-    return overlayConfig;
+    return new OverlayConfig({
+      positionStrategy,
+      scrollStrategy,
+      hasBackdrop: true,
+    });
   }
 }
