@@ -1,1 +1,11 @@
-<p>input-radio works!</p>
+<label class="radio" htmlFor={id}>
+  <input
+    class="radio__input"
+    type="radio"
+    [name]="name"
+    [value]="optionValue"
+    [id]="id"
+    [checked]="optionValue === _value"
+  />
+  <span class="radio__title">{{title}}</span>
+</label>
