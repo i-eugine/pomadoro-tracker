@@ -67,7 +67,7 @@ export class ModalService {
     });
   }
 
-  private getContainerInjector(componentRef: ModalRef) {
+  private getContainerInjector<R>(componentRef: ModalRef<R>) {
     return Injector.create({
       providers: [{ provide: ModalRef, useValue: componentRef }],
     });

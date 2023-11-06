@@ -13,7 +13,7 @@ export class ModalComponent extends BasePortalOutlet {
 
   @ViewChild(CdkPortalOutlet, { static: true }) portalOutlet: CdkPortalOutlet | null = null
 
-  constructor(private componentRef: ModalRef) {
+  constructor() {
     super();
   }
 

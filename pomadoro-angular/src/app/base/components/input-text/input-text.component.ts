@@ -3,7 +3,6 @@ import { ControlValueAccessor } from '@angular/forms';
 
 type InputTextFunc = (_: string) => void;
 
-
 @Component({
   standalone: true,
   selector: 'pom-input-text',

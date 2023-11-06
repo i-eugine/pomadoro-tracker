@@ -1,0 +1,12 @@
+pom-edit-task-modal {
+  width: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.edit-task-modal__radios {
+  display: flex;
+  justify-content: space-between;
+}

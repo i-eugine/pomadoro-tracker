@@ -1,1 +1,70 @@
-<p>edit-task-modal works!</p>
+<h1 class="main-heading">Add task</h1>
+
+<pom-input-text id="title" title="Title" placeholder="Add title here" />
+
+<pom-input-text
+  id="description"
+  title="Description"
+  placeholder="Add description here"
+/>
+
+<div class="edit-task-modal__section">
+  <label class="label">CATEGORY</label>
+
+  <div class="edit-task-modal__radios">
+    <pom-input-radio
+      *ngFor="let radio of categoryRadiosList"
+      [style.--radio-color]="categoryColorMap[radio.value]"
+      [id]="radio.value"
+      [value]="radio.value"
+      [title]="radio.title"
+      name="category"
+    />
+  </div>
+</div>
+
+<pom-input-text id="deadline" title="DEADLINE" placeholder="DD-MM-YYYY" />
+
+<div class="edit-task-modal__section">
+  <label class="label">ESTIMATION</label>
+
+  <label class="checkbox-container">
+    <input type="checkbox" name="estimation" checked />
+    <span class="checkmark"></span>
+  </label>
+  <label class="checkbox-container">
+    <input type="checkbox" name="estimation" checked />
+    <span class="checkmark"></span>
+  </label>
+  <label class="checkbox-container">
+    <input type="checkbox" name="estimation" checked />
+    <span class="checkmark"></span>
+  </label>
+  <label class="checkbox-container">
+    <input type="checkbox" name="estimation" />
+    <span class="checkmark"></span>
+  </label>
+  <label class="checkbox-container">
+    <input type="checkbox" name="estimation" />
+    <span class="checkmark"></span>
+  </label>
+</div>
+<div class="edit-task-modal__section">
+  <label class="label">PRIORITY</label>
+
+  <div class="edit-task-modal__radios">
+    <pom-input-radio
+      *ngFor="let radio of priorityRadiosList"
+      [style.--radio-color]="priorityColorMap[radio.value]"
+      [id]="radio.value"
+      [value]="radio.value"
+      [title]="radio.title"
+      name="category"
+    />
+  </div>
+</div>
+
+<div class="actions-section">
+  <pom-button color="green">Save</pom-button>
+  <pom-button color="red" (click)="closeHandler()">Cancel</pom-button>
+</div>
