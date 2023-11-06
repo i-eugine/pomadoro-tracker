@@ -1,0 +1,23 @@
+pom-input-text {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+}
+
+.input-text__field {
+  width: 100%;
+  background: none;
+  padding-bottom: 10px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--Nepal);
+
+  &::placeholder {
+    color: var(--Nepal);
+    font-weight: 300;
+  }
+
+  :hover {
+    border-color: white;
+  }
+}
