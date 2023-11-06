@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TimerComponent } from './timer.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -9,7 +10,9 @@ import { TimerComponent } from './timer.component';
     TimerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+
+    RouterModule.forChild([{ path: '', component: TimerComponent}])
   ]
 })
 export class TimerModule { }

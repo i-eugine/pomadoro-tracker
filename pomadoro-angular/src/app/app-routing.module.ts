@@ -24,7 +24,8 @@ const routes: Routes = [
       {
         path: `${ROUTES.settings}`,
         loadChildren: async () => (await import('./modules/settings/settings.module')).SettingsModule
-      }
+      },
+      
     ]
   }
 ];
